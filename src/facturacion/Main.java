@@ -20,6 +20,7 @@ public class Main {
         Control_registroRoot cr = new Control_registroRoot(null,null,null,null,null,null,0,null);
         
         if (cr.consultaTodo_root() != null ) {
+            System.out.println();
             try {
             for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
                 if ("Nimbus".equals(info.getName())) {
