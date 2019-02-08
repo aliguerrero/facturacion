@@ -52,7 +52,7 @@
                       </Group>
                       <EmptySpace min="-2" pref="80" max="-2" attributes="0"/>
                       <Component id="jLabel3" min="-2" pref="0" max="-2" attributes="0"/>
-                      <EmptySpace pref="512" max="32767" attributes="0"/>
+                      <EmptySpace pref="510" max="32767" attributes="0"/>
                       <Component id="jButton1" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <Component id="jScrollPane1" max="32767" attributes="0"/>
@@ -225,7 +225,7 @@
     </Component>
     <Component class="javax.swing.JLabel" name="LNomArt">
       <Properties>
-        <Property name="text" type="java.lang.String" value="Nombre del articulo:"/>
+        <Property name="text" type="java.lang.String" value="Codigo del Producto:"/>
       </Properties>
       <AuxValues>
         <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>

@@ -135,7 +135,7 @@ public final class interfaz_buscararticulos extends javax.swing.JInternalFrame {
             }
         });
 
-        LNomArt.setText("Nombre del articulo:");
+        LNomArt.setText("Codigo del Producto:");
 
         BotonBuscarArticulo.setText("Buscar");
         BotonBuscarArticulo.addActionListener(new java.awt.event.ActionListener() {
@@ -181,7 +181,7 @@ public final class interfaz_buscararticulos extends javax.swing.JInternalFrame {
                             .addComponent(BotonActualizarPrecios, javax.swing.GroupLayout.PREFERRED_SIZE, 175, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(80, 80, 80)
                         .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 0, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 512, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 510, Short.MAX_VALUE)
                         .addComponent(jButton1))
                     .addComponent(jScrollPane1))
                 .addGap(26, 26, 26))
