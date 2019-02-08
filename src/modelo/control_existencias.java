@@ -129,6 +129,7 @@ public class control_existencias
         return resultado;
       }
      
+     
      public Object[][] datos_cliente(String id_cliente)
      {
         String[] columnas={"Documento","Descripcion","Nombres","Apellidos","Direccion","Nombre_ciudad","Telefono"};

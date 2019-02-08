@@ -17,6 +17,7 @@ import vista.Interfaz_login;
 public class Main {
      
     public static void main(String[] args) {
+        
         Control_registroRoot cr = new Control_registroRoot(null,null,null,null,null,null,0,null);
         
         if (cr.consultaTodo_root() != null ) {

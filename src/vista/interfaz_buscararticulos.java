@@ -5,8 +5,10 @@
 package vista;
 
 import controlador.Articulos;
+import javax.swing.JOptionPane;
 import modelo.control_articulos;
 import javax.swing.table.DefaultTableModel;
+import rsscalelabel.RSScaleLabel;
 
 /**
  *
@@ -17,12 +19,17 @@ public final class interfaz_buscararticulos extends javax.swing.JInternalFrame {
     /**
      * Creates new form interfaz_buscararticulos
      */
-    private Object[][] datostabla; 
+    private Object[][] datostabla,datostabla1; 
     private boolean oculto = true;
+    private int saberCheck = 0;
+    RSScaleLabel rs = new RSScaleLabel();
     public interfaz_buscararticulos() {
         initComponents();
         mostrar_tabla();
         ocultarOnOff();
+        //this.LCarga.setVisible(false);
+        
+        
     }
     
     public void mostrar_tabla(){
@@ -131,6 +138,11 @@ public final class interfaz_buscararticulos extends javax.swing.JInternalFrame {
         LNomArt.setText("Nombre del articulo:");
 
         BotonBuscarArticulo.setText("Buscar");
+        BotonBuscarArticulo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BotonBuscarArticuloActionPerformed(evt);
+            }
+        });
 
         btnCancelar.setText("Cancelar");
         btnCancelar.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -144,34 +156,34 @@ public final class interfaz_buscararticulos extends javax.swing.JInternalFrame {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(28, 28, 28)
+                .addGap(66, 66, 66)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jScrollPane1)
-                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
+                    .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(CheckActualizarUnitario)
                             .addComponent(ChecActualizarTodo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(btnCancelar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                            .addComponent(btnCancelar, javax.swing.GroupLayout.PREFERRED_SIZE, 159, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addGroup(layout.createSequentialGroup()
                                 .addGap(47, 47, 47)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                     .addComponent(LNomArt, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(ComboActualizarPrecios, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                                    .addComponent(ComboActualizarPrecios, javax.swing.GroupLayout.PREFERRED_SIZE, 96, javax.swing.GroupLayout.PREFERRED_SIZE)))
                             .addGroup(layout.createSequentialGroup()
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(BtnActualizarPrecios, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                                .addComponent(BtnActualizarPrecios, javax.swing.GroupLayout.PREFERRED_SIZE, 133, javax.swing.GroupLayout.PREFERRED_SIZE)))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(TextoBuscarArticulo, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                 .addComponent(BotonBuscarArticulo))
-                            .addComponent(BotonActualizarPrecios, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                        .addGap(430, 430, 430)
+                            .addComponent(BotonActualizarPrecios, javax.swing.GroupLayout.PREFERRED_SIZE, 175, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(80, 80, 80)
                         .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 0, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 200, Short.MAX_VALUE)
-                        .addComponent(jButton1)))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 512, Short.MAX_VALUE)
+                        .addComponent(jButton1))
+                    .addComponent(jScrollPane1))
                 .addGap(26, 26, 26))
         );
         layout.setVerticalGroup(
@@ -180,24 +192,29 @@ public final class interfaz_buscararticulos extends javax.swing.JInternalFrame {
                 .addContainerGap()
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 354, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton1)
-                    .addComponent(jLabel3)
-                    .addComponent(CheckActualizarUnitario)
-                    .addComponent(LNomArt)
-                    .addComponent(TextoBuscarArticulo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(BotonBuscarArticulo))
-                .addGap(11, 11, 11)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(ChecActualizarTodo)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(ComboActualizarPrecios, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(BotonActualizarPrecios)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 12, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btnCancelar)
-                    .addComponent(BtnActualizarPrecios))
-                .addContainerGap())
+                .addComponent(jLabel3)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jButton1)
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(CheckActualizarUnitario)
+                            .addComponent(LNomArt)
+                            .addComponent(TextoBuscarArticulo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(BotonBuscarArticulo))
+                        .addGap(11, 11, 11)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                .addComponent(ComboActualizarPrecios, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(BotonActualizarPrecios))
+                            .addComponent(ChecActualizarTodo))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(btnCancelar)
+                            .addComponent(BtnActualizarPrecios))
+                        .addGap(0, 54, Short.MAX_VALUE))))
         );
 
         pack();
@@ -222,22 +239,33 @@ public final class interfaz_buscararticulos extends javax.swing.JInternalFrame {
 
     private void ChecActualizarTodoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_ChecActualizarTodoMouseClicked
         // TODO add your handling code here:
+        this.saberCheck = 2;
         if (this.ChecActualizarTodo.isSelected() == true) {
             this.CheckActualizarUnitario.setSelected(false);
             this.revalidate();
             this.checkTodo();
             this.BotonActualizarPrecios.setVisible(true);
             this.ComboActualizarPrecios.setVisible(true);
-            
+            this.BotonActualizarPrecios.setEnabled(true);
+            this.ComboActualizarPrecios.setEnabled(true);    
+        }
+        if (this.CheckActualizarUnitario.isSelected() == false &&  this.ChecActualizarTodo.isSelected() == false ) {
+            ocultarCampoActualizar();
+            this.BtnActualizarPrecios.setVisible(true);
         }
     }//GEN-LAST:event_ChecActualizarTodoMouseClicked
 
     private void CheckActualizarUnitarioMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_CheckActualizarUnitarioMouseClicked
         // TODO add your handling code here:
+        this.saberCheck = 1;
         if (this.CheckActualizarUnitario.isSelected() == true) {
             this.ChecActualizarTodo.setSelected(false);
             this.revalidate();
             this.activarCampoActualizar();  
+        }
+        if (this.CheckActualizarUnitario.isSelected() == false &&  this.ChecActualizarTodo.isSelected() == false ) {
+            ocultarCampoActualizar();
+            this.BtnActualizarPrecios.setVisible(true);
         }
     }//GEN-LAST:event_CheckActualizarUnitarioMouseClicked
 
@@ -262,21 +290,62 @@ public final class interfaz_buscararticulos extends javax.swing.JInternalFrame {
         // TODO add your handling code here:
         control_articulos ctr;
         int precioAumento = 0, nuevoPrecio=0;
+        int precioAumentos = 0, nuevoPrecios=0;
         ctr = new control_articulos();
         
-        Articulos[] Art = ctr.datos_articulos();
-        for (int i = 0; i < Art.length; i++) {
-            precioAumento = (Art[i].getPrecio_venta()*Integer.parseInt((String) this.ComboActualizarPrecios.getSelectedItem())/100);
-            nuevoPrecio = Art[i].getPrecio_venta()+precioAumento;
-            ctr.actualizar_articulos_pre(Art[i].getId_articulo(), nuevoPrecio);
-            precioAumento = 0;
-            nuevoPrecio = 0;
-            this.revalidate();
+        datostabla1 = ctr.consulta_articulos();
+        int tamaño = datostabla1.length;
+        if (this.saberCheck == 2 ) {
+           for (int i = 0; i < tamaño; ++i) {
+            
+                for (int j = 0; j < datostabla1[i].length ; ++j) {
+
+                    precioAumento = ((Integer.parseInt(String.valueOf(datostabla1[i][2]))*Integer.parseInt((String) this.ComboActualizarPrecios.getSelectedItem()))/100);
+                    nuevoPrecio = Integer.parseInt(String.valueOf(datostabla1[i][2]))+precioAumento;
+                    ctr.actualizar_articulos_pre(String.valueOf(datostabla1[i][0]), String.valueOf(nuevoPrecio));
+                    precioAumento = 0;
+                    nuevoPrecio   = 0;  
+                }
+                //this.LCarga.setVisible(true);
+            } 
+           JOptionPane.showMessageDialog(null, "Precios actualizados exitosamente", null, JOptionPane.INFORMATION_MESSAGE);
+           //this.LCarga.setVisible(false);
+        }
+        if (this.saberCheck == 1) {
+            System.out.println();
+            precioAumentos = ((Integer.parseInt(String.valueOf(datostabla1[0][2]))*Integer.parseInt((String) this.ComboActualizarPrecios.getSelectedItem()))/100);
+            nuevoPrecios = Integer.parseInt(String.valueOf(datostabla1[0][2]))+ precioAumentos;
+            //ctr.actualizar_articulos_pre(this.TextoBuscarArticulo.getText(), String.valueOf(nuevoPrecios));
+            precioAumentos = 0;
+            nuevoPrecios   = 0;
+           JOptionPane.showMessageDialog(null, "Precio actualizado exitosamente", null, JOptionPane.INFORMATION_MESSAGE);
         }
         
         
-        
     }//GEN-LAST:event_BotonActualizarPreciosActionPerformed
+
+    private void BotonBuscarArticuloActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotonBuscarArticuloActionPerformed
+        // TODO add your handling code here:
+        control_articulos ctr = new control_articulos();
+        String[] columnas = {"Codigo_articulo","Descripcion","Precio_venta","Precio_costo","stock","Tipo_de_articulo","Proveedor", "Fecha_ingreso"};
+        if (this.TextoBuscarArticulo.getText() != "") {
+            
+            datostabla = ctr.datos_articulos(this.TextoBuscarArticulo.getText());
+            if (datostabla[0][1] != null) {
+                this.ComboActualizarPrecios.setEnabled(true);
+                this.BotonActualizarPrecios.setEnabled(true);
+                DefaultTableModel datos = new DefaultTableModel(datostabla,columnas);
+                jTable1.setModel(datos);
+            }else{
+                this.ComboActualizarPrecios.setEnabled(false);
+                this.BotonActualizarPrecios.setEnabled(false);
+                JOptionPane.showMessageDialog(null, "No existe articulo con ese ID", null, JOptionPane.INFORMATION_MESSAGE);
+                this.TextoBuscarArticulo.setText("");
+            }
+            
+        }
+        
+    }//GEN-LAST:event_BotonBuscarArticuloActionPerformed
     private void checkTodo(){
         this.LNomArt.setVisible(false);
         this.TextoBuscarArticulo.setVisible(false);
@@ -296,7 +365,9 @@ public final class interfaz_buscararticulos extends javax.swing.JInternalFrame {
         
         this.BotonBuscarArticulo.setVisible(true);
         this.BotonActualizarPrecios.setVisible(true);
+        this.BotonActualizarPrecios.setEnabled(false);
         this.ComboActualizarPrecios.setVisible(true);
+        this.ComboActualizarPrecios.setEnabled(false);
         this.LNomArt.setVisible(true);
         this.TextoBuscarArticulo.setVisible(true);
     }

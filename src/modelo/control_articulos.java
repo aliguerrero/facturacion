@@ -44,14 +44,19 @@ public class control_articulos {
         Object[][] datos = sensql.GetTabla(columnas, "articulo", "select id_articulo,descripcion,articulo.precio_venta,precio_costo,stock,descripcion_articulo,Nombre_comercial,fecha_ingreso from articulo,proveedor,tipo_articulo where id_tipoarticulo=cod_tipo_articulo and No_documento=cod_proveedor;");
         return datos;
     }
-    
+    public String[][] datos_articulos(String id_articulo)
+     {
+        String[] columnas={"id_articulo","descripcion","precio_venta","precio_costo","stock","descripcion_articulo","Nombre_comercial","fecha_ingreso"};
+        String[][] resultado = (String[][]) sensql.GetTabla(columnas, "articulo", "select id_articulo,descripcion,articulo.precio_venta,precio_costo,stock,descripcion_articulo,Nombre_comercial,fecha_ingreso from articulo,proveedor,tipo_articulo where  No_documento=cod_proveedor and cod_tipo_articulo=id_tipoarticulo and id_articulo="+id_articulo);
+        return resultado;
+      }
     public String consulta_articuloID(String id){
-        return sensql.buscarIDart("select * from articulo where id_articulo='"+id+"'");
+        return sensql.buscarIDart("select * from articulo where id_articulo="+id);
     }
     public Articulos[] datos_articulos(){
         return sensql.ConsultarArticulo("select * from articulo");
     }
-    public void actualizar_articulos_pre(int id,int pre){
-        sensql.actualizarArticulo("UPDATE articulo SET `precio_venta`='"+pre+"where='"+id+"'");
+    public void actualizar_articulos_pre(String id,String pre){
+        sensql.actualizarArticulo("UPDATE articulo SET precio_venta="+pre+" where id_articulo="+id);
     }
 }

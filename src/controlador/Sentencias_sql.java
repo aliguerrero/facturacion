@@ -178,7 +178,7 @@ public class Sentencias_sql {
             // Retornar el valor boolean si esto se ejecuto.
             if (ps.executeUpdate() > 0) {
 
-                JOptionPane.showMessageDialog(null, "Precios actualizados exitosamente", null, JOptionPane.INFORMATION_MESSAGE);
+                //JOptionPane.showMessageDialog(null, "Precios actualizados exitosamente", null, JOptionPane.INFORMATION_MESSAGE);
                 System.out.println("Precios actualizados exitosamente");
                 
             }
